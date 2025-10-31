@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+    <div style="display: flex; justify-content: space-between; margin-right: 20px;">
+        <div>
+            <h1>My Notes</h1>
+            <p><i>Keep all your notes arranged!!</i></p>
+        </div>
+        <button style=" height: 50px; width: 50px; border-radius: 100%; font-size:40px; cursor: pointer;">+</button>
+    </div>
+    <hr>
+    <div style="width : 90vw; min-height: 200px; background-color: gray; border: 1px solid black; margin:auto; border-radius: 20px; display: flex; flex-wrap: wrap;">
+        {% if notes.length!= 0 %}
+            <p>No notes yet...</p>
+        {% else %}
+            {% for note in notes %}
+                <div>note</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %} 

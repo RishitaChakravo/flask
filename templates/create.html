@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+    <form method='POST' action="/">
+        <label htmlfor="title">Title: </label>
+        <input placeholder="enter title" name="title"/>
+        <label htmlfor="txt">Text: </label>
+        <input placeholder="enter content" name="txt"/>
+    </form>
+{% endblock %}
