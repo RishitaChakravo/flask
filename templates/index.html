@@ -7,18 +7,30 @@
 {% block body %}
     <div style="display: flex; justify-content: space-between; margin-right: 20px;">
         <div>
-            <h1>My Notes</h1>
+            <h1 style="font-style: baskerville; font-weight: normal; font-size: 50px;">My Notes</h1>
             <p><i>Keep all your notes arranged!!</i></p>
         </div>
-        <button style=" height: 50px; width: 50px; border-radius: 100%; font-size:40px; cursor: pointer;">+</button>
+        <div style=" height: 50px; width: 50px; border-radius: 100%; font-size:40px; cursor: pointer;">
+            <a href="/create" style="color: black; text-decoration: none;">+</a>
+        </div>
     </div>
     <hr>
-    <div style="width : 90vw; min-height: 200px; background-color: gray; border: 1px solid black; margin:auto; border-radius: 20px; display: flex; flex-wrap: wrap;">
-        {% if notes.length!= 0 %}
+    <div style="width : 90vw; min-height: 200px; background-color: gray; border: 1px solid black; margin:auto; border-radius: 20px; display: flex; flex-wrap: wrap; padding: 10px; gap: 3px;">
+        {% if notes|length == 0 %}
             <p>No notes yet...</p>
         {% else %}
             {% for note in notes %}
-                <div>note</div>
+                <div style="border: 1px solid black; max-width: 200px; padding: 3px;"> 
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <p style="font-size: large; font-weight: bold;">{{note.title}}</p>
+                        <div>
+                            <a href="/delete/{{note._id}}" style="text-decoration: none;">🗑️</a>
+                            <a href="/update/{{note._id}}" style="text-decoration: none;">📝</a>
+                        </div>
+                    </div>
+                    <p>{{note.text}}</p>
+                    <p>{{note.date}}</p>
+                </div>
             {% endfor %}
         {% endif %}
     </div>

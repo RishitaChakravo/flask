@@ -5,10 +5,11 @@
 {% endblock %}
 
 {% block body %}
-    <form method='POST' action="/">
-        <label htmlfor="title">Title: </label>
-        <input placeholder="enter title" name="title"/>
-        <label htmlfor="txt">Text: </label>
-        <input placeholder="enter content" name="txt"/>
+    <form method='POST' action="/create">
+        <label for="title">Title: </label>
+        <input type="text" placeholder="enter title" name="title"/>
+        <label for="txt">Text: </label>
+        <textarea name="txt" required></textarea>
+        <button type="submit">Submit</button>
     </form>
 {% endblock %}
