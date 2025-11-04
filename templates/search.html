@@ -6,13 +6,19 @@
         <input type="text" name="keyword" placeholder="Search something..." required/>
         <button type="submit">submit</button>
     </form>
-    <p>Results for: {{keyword}}</p>
     <div>
-        {% for note in notes %}
-            <div>
-                <p>{{note.title}}</p>
-                <p>{{note.text}}</p>
-            </div>
-        {% endfor %}
+        {% if keyword %}
+            {% if notes %}
+                <p>Results for: {{keyword}}</p>
+                {% for note in notes %}
+                    <div>
+                        <p><b>{{note.title}}</b></p>
+                        <p>{{note.text}}</p>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% else %}
+            <p>Search notes</p>
+        {% endif %}
     </div>
 {% endblock %}

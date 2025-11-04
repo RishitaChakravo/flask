@@ -49,14 +49,14 @@ def update(id):
 def search():
     keyword = request.args.get('keyword')
     if keyword:
-        results = mongo.db.notes.find({
+        results = list(mongo.db.notes.find({
             "$or" : [
-                {"title" : {"$regex" : keyword, "$option" : "i"}},
-                {"text" : {"$regex" : keyword, "$option" : "i"}}
+                {"title" : {"$regex" : keyword, "$options" : "i"}},
+                {"text" : {"$regex" : keyword, "$options" : "i"}}
             ]
-        })
+        }))
         return render_template("search.html", notes=results, keyword=keyword)
-    return render_template('search.html')
+    return render_template('search.html', notes=[])
     
 if __name__ == "__main__":
     app.run(debug=True)
