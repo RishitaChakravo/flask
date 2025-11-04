@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block head %}{% endblock %}
+{% block body %}
+    <a href="{{url_for('home')}}"><-</a>
+    <form method="get" action="/search">
+        <input type="text" name="keyword" placeholder="Search something..." required/>
+        <button type="submit">submit</button>
+    </form>
+    <p>Results for: {{keyword}}</p>
+    <div>
+        {% for note in notes %}
+            <div>
+                <p>{{note.title}}</p>
+                <p>{{note.text}}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

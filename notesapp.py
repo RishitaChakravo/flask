@@ -44,6 +44,19 @@ def update(id):
     else: 
         note = mongo.db.notes.find_one({'_id' : ObjectId(id)})
         return render_template('update.html', note=note)
+
+@app.route("/search", methods=['GET', 'POST'])
+def search():
+    keyword = request.args.get('keyword')
+    if keyword:
+        results = mongo.db.notes.find({
+            "$or" : [
+                {"title" : {"$regex" : keyword, "$option" : "i"}},
+                {"text" : {"$regex" : keyword, "$option" : "i"}}
+            ]
+        })
+        return render_template("search.html", notes=results, keyword=keyword)
+    return render_template('search.html')
     
 if __name__ == "__main__":
     app.run(debug=True)
